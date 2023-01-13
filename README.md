@@ -20,7 +20,7 @@ Columns in 'ExpenseLimit' table - ExpenseLimitId (Primary Key) and TotalExpenseL
 
 OR
 
-Import the attached 
+Import the attached db_expensetrackerapp.bacpac file in SQL Server Management Studio.
 
 
 Step-3 : Create a new connection in Visual Studio in the Server Explorer with the created database and add a connection string in the web.config file as follows:

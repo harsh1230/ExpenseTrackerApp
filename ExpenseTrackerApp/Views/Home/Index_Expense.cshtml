@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ExpenseTrackerApp.Models.Expenses>
+
+@{
+    ViewBag.Title = "Expense List";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success!</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<h2>Expense List</h2><br />
+
+<table class="table" border="5">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <!--<th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>-->
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("Delete", "Expense", new { id = item.ExpenseId }))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <!--<td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>-->
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Expense", new { id = item.ExpenseId }, new { @class = "btn btn-primary", @role = "button" }) |
+                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete the expense of ID = @item.ExpenseId')" class="btn btn-danger" />
+                </td>
+            </tr>
+        }
+    }
+
+</table>

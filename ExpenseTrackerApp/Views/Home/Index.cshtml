@@ -1,0 +1,162 @@
+﻿@using ExpenseTrackerApp.Models
+@model dynamic
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #categories{
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #categories td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #categories tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #categories tr:hover {
+                background-color: #ddd;
+            }
+
+            #categories th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+
+        #expenses {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #expenses td, #expenses th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #expenses tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #expenses tr:hover {
+                background-color: #ddd;
+            }
+
+            #expenses th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+
+        #expenselimit {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #expenselimit td, #expenselimit th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #expenselimit tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #expenselimit tr:hover {
+                background-color: #ddd;
+            }
+
+            #expenselimit th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <h2>Category List</h2>
+    <hr />
+    <br />
+    <table id="categories" border="5" align="center">
+        <tr>
+            <th>CategoryName</th>
+            <th>CategoryExpenseLimit</th>
+        </tr>
+        @foreach (Categories c in Model.categorylist)
+        {
+            <tr>
+                <td>
+                    @c.CategoryName
+                </td>
+                <td>
+                    @c.CategoryExpenseLimit
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h2>Expense List</h2>
+    <hr />
+    <br />
+    <table id="expenses" border="5" align="center">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>CategoryName</th>
+        </tr>
+        @foreach (Expenses e in Model.expenselist)
+        {
+            <tr>
+                <td>
+                    @e.Title
+                </td>
+                <td>
+                    @e.Description
+                </td>
+                <td>
+                    @e.Amount
+                </td>
+                <td>
+                    @e.CategoryName
+                </td>
+            </tr>
+        }
+    </table>
+
+    <h2>Total Expense Limit</h2>
+    <hr />
+    <br />
+    <table id="expenselimit" border="5" align="center">
+        <tr>
+            <th>Total Expense Limit</th>
+        </tr>
+        @foreach (ExpenseLimit el in Model.expenselimit)
+        {
+            <tr>
+                <td>
+                    @el.TotalExpenseLimit
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

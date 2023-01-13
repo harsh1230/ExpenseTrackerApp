@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ExpenseTrackerApp.Models.Expenses>
+
+@{
+    ViewBag.Title = "List of Expenses";
+}
+
+<h2>List of Expenses</h2><br />
+
+<table class="table" border="5">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <!--<th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>-->
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <!--<td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>-->
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Back to Category List", "Index_Category", "Home")

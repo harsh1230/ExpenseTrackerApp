@@ -18,6 +18,10 @@ Columns in 'Expenses' table - ExpenseId (Primary Key), Title, Description, Amoun
 
 Columns in 'ExpenseLimit' table - ExpenseLimitId (Primary Key) and TotalExpenseLimit
 
+OR
+
+Import the attached 
+
 
 Step-3 : Create a new connection in Visual Studio in the Server Explorer with the created database and add a connection string in the web.config file as follows:
 
